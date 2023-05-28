@@ -1,6 +1,6 @@
 package br.com.alura.screenmatch.calculations;
 
-import br.com.alura.screenmatch.model.Title;
+import br.com.alura.screenmatch.catalog.Title;
 
 public class TimeCalculator extends Title {
 

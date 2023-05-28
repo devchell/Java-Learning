@@ -1,6 +1,6 @@
 import br.com.alura.screenmatch.calculations.TimeCalculator;
-import br.com.alura.screenmatch.model.Movie;
-import br.com.alura.screenmatch.model.Series;
+import br.com.alura.screenmatch.catalog.Movie;
+import br.com.alura.screenmatch.catalog.Series;
 
 public class Main {
     public static void main(String[] args) {
