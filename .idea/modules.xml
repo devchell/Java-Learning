@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Challenges/Challenges.iml" filepath="$PROJECT_DIR$/Challenges/Challenges.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Formação - Java.iml" filepath="$PROJECT_DIR$/.idea/Formação - Java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java_CriandoSuaPrimeiraAplicacao/Java_CriandoSuaPrimeiraAplicacao.iml" filepath="$PROJECT_DIR$/Java_CriandoSuaPrimeiraAplicacao/Java_CriandoSuaPrimeiraAplicacao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Screen_Match_v1/Screen_Match_v1.iml" filepath="$PROJECT_DIR$/Screen_Match_v1/Screen_Match_v1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Screen_Match_v2/Screen_Match_v2.iml" filepath="$PROJECT_DIR$/Screen_Match_v2/Screen_Match_v2.iml" />
+    </modules>
+  </component>
+</project>
