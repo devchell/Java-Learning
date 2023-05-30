@@ -1,11 +1,15 @@
 package br.com.alura.screenmatch.catalog;
 
-public class Series extends Title {
+public class Series extends Titles {
 
     private int seasons;
     private int totalEpisodes;
     private int minPerEp;
     private boolean active;
+
+    public Series(String name, int yearReleased) {
+        super(name, yearReleased);
+    }
 
     public int getSeasons() {
         return seasons;
@@ -42,6 +46,10 @@ public class Series extends Title {
     @Override
     public int getDurationMin() {
         return totalEpisodes * minPerEp;
+    }
+
+    public String toString() {
+        return "Serie: " + this.getName() + " (" + getYearReleased() + ")";
     }
 
     public void serieDataSheet() {

@@ -1,2 +1,4 @@
-package com.chell.shopping.creditcard;public class Shopping {
+package com.chell.shopping.creditcard;
+
+public class Shopping {
 }

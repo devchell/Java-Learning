@@ -1,8 +1,14 @@
 package br.com.alura.screenmatch.catalog;
 
-public class Movie extends Title {
+import br.com.alura.screenmatch.calculations.Rating;
+
+public class Movies extends Titles implements Rating {
 
     private String director;
+
+    public Movies(String name, int yearReleased) {
+        super(name, yearReleased);
+    }
 
     public String getDirector() {
         return director;
@@ -21,4 +27,13 @@ public class Movie extends Title {
         System.out.println("Total Ratings: " + getTotalRating());
     }
 
+    @Override
+    public int getRating() {
+        return (int) averageRating()/2;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie: " + this.getName() + " (" + getYearReleased() + ")";
+    }
 }

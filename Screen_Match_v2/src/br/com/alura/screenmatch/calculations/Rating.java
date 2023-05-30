@@ -1,2 +1,7 @@
-package br.com.alura.screenmatch.calculations;public class Rating {
+package br.com.alura.screenmatch.calculations;
+
+public interface Rating {
+
+    int getRating();
+
 }
