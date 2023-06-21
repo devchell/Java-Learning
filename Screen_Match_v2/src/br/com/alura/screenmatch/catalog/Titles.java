@@ -24,7 +24,7 @@ public class Titles implements Comparable<Titles> {
             throw new YearConversionErrorException("Can't conver the year because it is more than 4 characters long.");
         }
         this.yearReleased = Integer.valueOf(myTitleOMBd.year());
-        this.durationMin = Integer.valueOf(myTitleOMBd.runtime().substring(0, 3));
+        this.durationMin = Integer.valueOf(myTitleOMBd.runtime().substring(0, 2));
     }
 
     public void setName(String name) {

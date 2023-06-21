@@ -7,9 +7,12 @@ import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MainWithSearch {
@@ -18,47 +21,60 @@ public class MainWithSearch {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Search a movie: ");
+        String search = "";
 
-        var search = scanner.nextLine();
-        search = search.replaceAll(" ", "+");
+        List<Titles> titles = new ArrayList<>();
 
-        try {
+        Gson gson = new GsonBuilder()
+                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
+                .setPrettyPrinting()
+                .create();
 
-            HttpClient client = HttpClient.newHttpClient();
-            HttpRequest request = HttpRequest.newBuilder()
-                    .uri(URI.create("http://www.omdbapi.com/?t=" + search + "&apikey=eeac376e"))
-                    .build();
+        while (!search.equalsIgnoreCase("leave")) {
+            System.out.print("\nSearch a movie: ");
+            search = scanner.nextLine();
+            search = search.replaceAll(" ", "+");
+            if (search.equalsIgnoreCase("leave")) {
+                break;
+            }
 
-            HttpResponse<String> response = client
-                    .send(request, HttpResponse.BodyHandlers.ofString());
+            try {
 
-            //System.out.println(response.body());
+                HttpClient client = HttpClient.newHttpClient();
+                HttpRequest request = HttpRequest.newBuilder()
+                        .uri(URI.create("http://www.omdbapi.com/?t=" + search + "&apikey=eeac376e"))
+                        .build();
 
-            Gson gson = new GsonBuilder()
-                    .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                    .create();
+                HttpResponse<String> response = client
+                        .send(request, HttpResponse.BodyHandlers.ofString());
 
-            //System.ou]t.println("\nTitle: " + myTitle.getName());
-            //System.out.println("Year Released: " + myTitle.getYearReleased());
-            //System.out.println("\n" + myTitle);
 
-            TitleOMBd myTitleOMBd = gson.fromJson(response.body(), TitleOMBd.class);
-            System.out.println(myTitleOMBd);
+                TitleOMBd myTitleOMBd = gson.fromJson(response.body(), TitleOMBd.class);
+                System.out.println("\n" + myTitleOMBd);
 
-            //try {
-            Titles myTitle = new Titles(myTitleOMBd);
-            System.out.println(myTitle);
-        } catch (NumberFormatException e) {
-            System.out.print("ERROR! ");
-            System.out.println(e.getMessage());
-        } catch (IllegalArgumentException e){
-            System.out.println("Invalid URL! Try again");
-            System.out.println(e.getMessage());
-        }catch (YearConversionErrorException e){
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println("Finalizing!");
+                Titles myTitle = new Titles(myTitleOMBd);
+                System.out.println("\n" + myTitle);
+
+                titles.add(myTitle);
+
+            } catch (NumberFormatException e) {
+                System.out.print("ERROR! ");
+                System.out.println(e.getMessage());
+            } catch (IllegalArgumentException e) {
+                System.out.println("Invalid URL! Try again");
+                System.out.println(e.getMessage());
+            } catch (YearConversionErrorException e) {
+                System.out.println(e.getMessage());
+            } catch (NullPointerException e) {
+                System.out.println("Movie not found!");
+            }
         }
+        System.out.println(titles);
+
+        FileWriter write = new FileWriter("D:\\Alura\\Formação - Java\\Screen_Match_v2\\json\\movies.json");
+        write.write(gson.toJson(titles));
+        write.close();
+
+        System.out.println("\nFinalizing");
     }
 }

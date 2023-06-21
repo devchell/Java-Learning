@@ -1,0 +1,26 @@
+[
+  {
+    "Name": "Matrix",
+    "YearReleased": 1993,
+    "IncludedPlan": false,
+    "RatingSum": 0.0,
+    "TotalRating": 0,
+    "DurationMin": 60
+  },
+  {
+    "Name": "Top Gun",
+    "YearReleased": 1986,
+    "IncludedPlan": false,
+    "RatingSum": 0.0,
+    "TotalRating": 0,
+    "DurationMin": 10
+  },
+  {
+    "Name": "Dogville",
+    "YearReleased": 2003,
+    "IncludedPlan": false,
+    "RatingSum": 0.0,
+    "TotalRating": 0,
+    "DurationMin": 17
+  }
+]
