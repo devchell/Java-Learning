@@ -2,6 +2,7 @@ package br.com.alura.screenmatch.main;
 
 import br.com.alura.screenmatch.catalog.TitleOMBd;
 import br.com.alura.screenmatch.catalog.Titles;
+import br.com.alura.screenmatch.myexceptions.YearConversionErrorException;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -20,8 +21,10 @@ public class MainWithSearch {
         System.out.print("Search a movie: ");
 
         var search = scanner.nextLine();
+        search = search.replaceAll(" ", "+");
 
         try {
+
             HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create("http://www.omdbapi.com/?t=" + search + "&apikey=eeac376e"))
@@ -51,6 +54,9 @@ public class MainWithSearch {
             System.out.println(e.getMessage());
         } catch (IllegalArgumentException e){
             System.out.println("Invalid URL! Try again");
+            System.out.println(e.getMessage());
+        }catch (YearConversionErrorException e){
+            System.out.println(e.getMessage());
         } finally {
             System.out.println("Finalizing!");
         }

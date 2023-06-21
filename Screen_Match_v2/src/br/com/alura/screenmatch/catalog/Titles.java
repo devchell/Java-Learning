@@ -1,6 +1,8 @@
 package br.com.alura.screenmatch.catalog;
 
 
+import br.com.alura.screenmatch.myexceptions.YearConversionErrorException;
+
 public class Titles implements Comparable<Titles> {
 
     private String name;
@@ -17,6 +19,10 @@ public class Titles implements Comparable<Titles> {
 
     public Titles(TitleOMBd myTitleOMBd) {
         this.name = myTitleOMBd.title();
+
+        if (myTitleOMBd.year().length() > 4){
+            throw new YearConversionErrorException("Can't conver the year because it is more than 4 characters long.");
+        }
         this.yearReleased = Integer.valueOf(myTitleOMBd.year());
         this.durationMin = Integer.valueOf(myTitleOMBd.runtime().substring(0, 3));
     }
